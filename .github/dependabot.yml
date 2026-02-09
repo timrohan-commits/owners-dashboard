@@ -1,0 +1,80 @@
+# To get sMerged updates from /webhook into main branch.
+
+Changes include:
+
+- Added Stripe createCheckoutSession webhook implementation
+- Validates incoming Stripe requests and signatures
+- Populates subscription metadata:
+    - property_address
+    - property_type
+    - listing_channels
+    - lease_period
+    - flow_type
+    - lead_role
+    - lead_stage
+    - lead_type
+    - property_code
+    - tenant_name
+- Updated invoice templates and custom fields for VIVIA RENTALS
+- Applied statement descriptors: VIVIARENTALS / VIVIA
+- Integrated customer-facing details for Stripe, invoices, and receipts
+- Updated business info: Legal name (Nancy Johnson), DBA (VIVIA RENTALS), EIN, contact info
+- Ensures compliance with Zumper, Stripe, and PayPal underwriting
+- Platform ready for live testing and production deployment
+
+This merge consolidates webhook, invoice, and metadata features, preparing the main branch for deployment.
+tarted with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+      version: 2
+updates:
+  # Node.js / JavaScript dependencies
+  - package-ecosystem: "npm"
+    directory: "/" # location of package.json
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Chicago"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
+      - "auto-update"
+
+  # GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/" # location of workflow files
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Chicago"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(actions)"
+    labels:
+      - "dependencies"
+      - "auto-update"
+
+  # Optional: Python / backend dependencies (if used)
+  # - package-ecosystem: "pip"
+  #   directory: "/backend"
+  #   schedule:
+  #     interval: "weekly"
+  #   open-pull-requests-limit: 3
+  #   commit-message:
+  #     prefix: "chore(deps)"
+  #   labels:
+  #     - "dependencies"
+  #     - "auto-update"
+
